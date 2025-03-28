@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào mừng bạn</title>
+    <link rel="stylesheet" href="./b1_ss36.css">
+</head>
+<body>
+    <div class="container">
+        <div id="nameForm" class="card">
+            <h2>Nhập tên của bạn</h2>
+            <input type="text" id="nameInput" placeholder="Bạn tên là gì" required>
+            <button onclick="saveName()">Lưu</button>
+        </div>
+
+        <div id="greeting" class="card" style="display: none;">
+            <h2 id="greetingMessage"></h2>
+            <button onclick="changeName()">Đổi tên</button>
+        </div>
+    </div>
+    <script src="./b1_ss36.js"></script>
+</body>
+</html>
