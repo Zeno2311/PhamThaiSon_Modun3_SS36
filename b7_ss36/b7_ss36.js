@@ -56,7 +56,11 @@ function login() {
         } else {
             localStorage.removeItem('rememberMe');
         }
-        window.location.href = 'home.html';
+
+        // Ẩn phần đăng nhập/đăng ký, hiện phần chào mừng
+        document.getElementById('auth-section').style.display = 'none';
+        document.getElementById('home-section').style.display = 'block';
+        document.getElementById('welcome-message').textContent = `Xin chào, ${username}! 👋`;
     } else {
         document.getElementById('error-message').style.display = 'block';
     }
@@ -66,7 +70,15 @@ function login() {
 function logout() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('rememberMe');
-    window.location.href = 'index.html';
+
+    // Ẩn phần chào mừng, hiện phần đăng nhập/đăng ký
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('auth-section').style.display = 'block';
+    showLogin(); // Mặc định hiển thị form đăng nhập
+    document.getElementById('login-username').value = '';
+    document.getElementById('login-password').value = '';
+    document.getElementById('remember-me').checked = false;
+    document.getElementById('error-message').style.display = 'none';
 }
 
 // Kiểm tra trạng thái đăng nhập khi tải trang
@@ -74,19 +86,15 @@ window.onload = function() {
     const currentUser = localStorage.getItem('currentUser');
     const rememberMe = localStorage.getItem('rememberMe');
 
-    // Nếu đang ở trang đăng nhập và có trạng thái "Ghi nhớ tôi"
-    if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-        if (currentUser && rememberMe === 'true') {
-            window.location.href = 'home.html';
-        }
-    }
-
-    // Nếu đang ở trang home
-    if (window.location.pathname.includes('home.html')) {
-        if (!currentUser) {
-            window.location.href = 'index.html';
-        } else {
-            document.getElementById('welcome-message').textContent = `Xin chào, ${currentUser}! 👋`;
-        }
+    if (currentUser && rememberMe === 'true') {
+        // Nếu có trạng thái "Ghi nhớ tôi", hiển thị phần chào mừng
+        document.getElementById('auth-section').style.display = 'none';
+        document.getElementById('home-section').style.display = 'block';
+        document.getElementById('welcome-message').textContent = `Xin chào, ${currentUser}! 👋`;
+    } else {
+        // Nếu không, hiển thị phần đăng nhập/đăng ký
+        document.getElementById('auth-section').style.display = 'block';
+        document.getElementById('home-section').style.display = 'none';
+        showLogin(); // Mặc định hiển thị form đăng nhập
     }
 };

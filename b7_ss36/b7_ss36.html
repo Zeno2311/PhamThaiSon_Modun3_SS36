@@ -8,39 +8,51 @@
 </head>
 <body>
     <div class="container">
-        <!-- Form Đăng ký -->
-        <div id="signup-form" class="form-box">
-            <h2>Đăng ký</h2>
-            <div class="input-group">
-                <label>Tên đăng nhập</label>
-                <input type="text" id="signup-username" placeholder="Tên đăng nhập">
+        <!-- Phần Đăng nhập / Đăng ký -->
+        <div id="auth-section">
+            <!-- Form Đăng ký -->
+            <div id="signup-form" class="form-box">
+                <h2>Đăng ký</h2>
+                <div class="input-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="signup-username" placeholder="Tên đăng nhập">
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="signup-password" placeholder="Mật khẩu">
+                </div>
+                <button onclick="signup()">Đăng ký</button>
+                <p>Đã có tài khoản? <a href="#" onclick="showLogin()">Đăng nhập</a></p>
             </div>
-            <div class="input-group">
-                <label>Mật khẩu</label>
-                <input type="password" id="signup-password" placeholder="Mật khẩu">
+
+            <!-- Form Đăng nhập -->
+            <div id="login-form" class="form-box" style="display: none;">
+                <h2>Đăng nhập</h2>
+                <div class="input-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="login-username" placeholder="Tên đăng nhập">
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="login-password" placeholder="Mật khẩu">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Ghi nhớ tôi</label>
+                </div>
+                <button onclick="login()">Đăng nhập</button>
+                <p>Chưa có tài khoản? <a href="#" onclick="showSignup()">Đăng ký</a></p>
+                <p id="error-message" style="color: red; display: none;">Tên đăng nhập hoặc mật khẩu không đúng!</p>
             </div>
-            <button onclick="signup()">Đăng ký</button>
-            <p>Đã có tài khoản? <a href="#" onclick="showLogin()">Đăng nhập</a></p>
         </div>
 
-        <!-- Form Đăng nhập -->
-        <div id="login-form" class="form-box" style="display: none;">
-            <h2>Đăng nhập</h2>
-            <div class="input-group">
-                <label>Tên đăng nhập</label>
-                <input type="text" id="login-username" placeholder="Tên đăng nhập">
+        <!-- Phần chào mừng sau khi đăng nhập -->
+        <div id="home-section" style="display: none;">
+            <div class="home-box">
+                <h2 id="welcome-message">Xin chào, ! 👋</h2>
+                <p>Chào mừng bạn đến với hệ thống mini!</p>
+                <button onclick="logout()">Đăng xuất</button>
             </div>
-            <div class="input-group">
-                <label>Mật khẩu</label>
-                <input type="password" id="login-password" placeholder="Mật khẩu">
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Ghi nhớ tôi</label>
-            </div>
-            <button onclick="login()">Đăng nhập</button>
-            <p>Chưa có tài khoản? <a href="#" onclick="showSignup()">Đăng ký</a></p>
-            <p id="error-message" style="color: red; display: none;">Tên đăng nhập hoặc mật khẩu không đúng!</p>
         </div>
     </div>
     <script src="./b7_ss36.js"></script>
